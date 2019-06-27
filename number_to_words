@@ -1,0 +1,160 @@
+/***************************************************Number To Words Conversion*************************************/
+
+var one_place=[" ","one ", "two ", "three ", "four ", 
+                 "five ", "six ", "seven ", "eight ", 
+                 "nine ", "ten ", "eleven ", "twelve ", 
+                 "thirteen ", "fourteen ", "fifteen ", 
+                 "sixteen ", "seventeen ", "eighteen ", 
+                 "nineteen "];
+
+ var tens_place =[" ", " ", "twenty ", "thirty ", "forty ", 
+                 "fifty ", "sixty ", "seventy ", "eighty ", 
+                 "ninety" ]; 
+
+var  place=["hundread"];
+
+
+function conversion(output)
+{
+  
+    string =one_place[parseInt(output/100)];
+    console.log(""+string +place[0]);
+
+    string=parseInt(output/100);
+    input1=output-(string*100);
+
+    string1 =tens_place[parseInt(input1/10)];
+    console.log(""+string1 );
+
+    string2=one_place[input1%10];
+    console.log(""+string2 );  
+}
+
+function converter(input)
+ {   
+
+   
+    var string;
+if(input<=19)
+{
+    string=one_place[input];
+    console.log(""+string);
+}
+
+if(input>=20 && input<=99)
+{
+    string =tens_place[parseInt(input/10)];
+    console.log(""+string );
+    string1=one_place[input%10];
+    console.log(""+string1 );
+
+}
+if(input>=100 && input<=999)
+{
+    string =one_place[parseInt(input/100)];
+    console.log(""+string +place[0]);
+
+    string=parseInt(input/100);
+    input1=input-(string*100);
+
+    string1 =tens_place[parseInt(input1/10)];
+    console.log(" "+string1 );
+
+    string2=one_place[input1%10];
+    console.log(" "+string2 );
+
+
+}
+if(input>=1000 && input <=999999)
+{
+    a=parseInt(input/1000);
+    conversion(a)
+    console.log("thousand")
+
+    b=((parseInt(input/1000))*1000);
+    c=input-b;
+    conversion(c)
+
+}
+
+
+if(input>=1000000 && input <=999999999)
+{
+    a=parseInt(input/1000000);
+    conversion(a)
+    console.log("million")
+
+    b=((parseInt(input/1000000))*1000000);
+    c=input-b;
+    d=parseInt(c/1000);
+    conversion(d)
+    console.log("thousand")
+
+    f=c-(d*1000)
+    
+    conversion(f)
+
+}
+
+if(input>=1000000000 && input <=999999999999)
+{
+    a=parseInt(input/1000000000);
+    conversion(a)
+    console.log("billion")
+
+    b=((parseInt(input/1000000000))*1000000000);
+    c=input-b;
+    d=parseInt(c/1000000);
+    conversion(d)
+    console.log("million")
+
+    f=c-(d*1000000)
+    g=parseInt(f/1000)
+    conversion(g)
+    console.log("thousand")
+
+    
+    h=f-(g*1000000)
+    conversion(g)
+
+}
+
+
+if(input>=1000000000000 && input <=999999999999999)
+{
+    a=parseInt(input/1000000000000);
+    conversion(a)
+    console.log("trillion")
+
+    b=((parseInt(input/1000000000000))*1000000000000);
+    c=input-b;
+    d=parseInt(c/1000000000);
+    conversion(d)
+    console.log("billion")
+
+    f=c-(d*1000000000)
+    g=parseInt(f/1000000)
+    conversion(g)
+    console.log("million")
+
+    
+    h=f-(g*1000000)
+    i=parseInt(h/1000)
+    conversion(i)
+    console.log("thousand")
+    
+    j=h-(i*1000)
+    conversion(j)
+}
+ }
+ converter(999999999999999);
+ 
+ 
+ /*******************************************Output********************************************************************************************
+ 
+ nine hundread ninety nine trillion nine hundread ninety nine billion nine hundread ninety nine million nine hundread ninety nine thousand
+ 
+ 
+ 
+ **************************************************************************************************************************************************/
+  
