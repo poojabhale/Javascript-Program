@@ -1,0 +1,90 @@
+
+/*******************************number to words*******************************/
+var ones_place =['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine']
+var unique=['ten','Eleven','Twelve','thirteen','forteen','fifteen','sixteen','seventeen','eighteen','nineteen']
+var hundred =['','thousand','million','billion','trillion','quadrillion','quintillion','sextillion','septillion','octillion','nonillion']
+var tens_place =['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety']
+function numtoword(array,i)
+{
+    var chunk = array[i]
+    var str =ones_place[parseInt(chunk/100)]
+
+    if(str!==ones_place[0])
+    {
+        console.log(""+str+ " "+"hundred")
+    }
+    str=parseInt(array[i]/100);
+    str1=array[i]-(str*100);
+    if(str1>=10 && str1<=19)
+    {
+        var str2=str1%10
+    	if(i==0)
+   	 {
+   	   console.log(unique[str2]+"");
+   	 }
+    	else    {
+       	   console.log(unique[str2]+" "+hundred[i]);
+    		}
+    }
+    else{
+    str3=tens_place[parseInt(str1/10)]
+    console.log(""+str3)
+    var str4=ones_place[str1%10]
+    console.log(""+str4+" "+hundred[i])
+	}
+}
+console.log("enter the numbers")
+var input=process.stdin
+input.setEncoding('utf-8')
+input.on("data",function(data){
+    var output=""
+    var num = data.toString().slice(0,data.length-2)
+    var array = []
+    if (num==0)
+    {
+        console.log('Zero')
+    }
+    if(num.length>3)
+    {
+        var x = num.length
+        while(x>0)
+        {
+            array.push(num.slice(Math.max(x-3,0),x).toString())
+            x = Math.max(x-3,0)
+        }
+        array = array.reverse()
+    }
+    else{
+        array.push(num.toString())
+    }
+       array =array.reverse()
+    for(var i=array.length-1;i>=0;i--)
+    {
+        numtoword(array,i)
+    }
+})
+
+/*****************************output******************************
+PS D:\tyhtr\first-assignment> node c_digit.js
+enter the numbers
+12345678345678967890
+Twelve quintillion
+Three hundred     
+forty
+Five quadrillion  
+Six hundred       
+seventy
+Eight trillion    
+Three hundred     
+forty
+Five billion      
+Six hundred       
+seventy
+Eight million     
+Nine hundred      
+sixty
+Seven thousand    
+Eight hundred     
+ninety
+ 
+*************************************************************/
