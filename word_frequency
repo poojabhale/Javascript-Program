@@ -1,0 +1,25 @@
+/***************************word frequency*******************************/
+var  map =new Map();
+var r1=require("readline")
+var prompts=r1.createInterface(process.stdin,process.stdout)
+prompts.question("enter the statement :",function(string){
+     var  str= string.replace(/[.]/g, '')
+     var  str1=str.split(/\s/)
+     var c=str1.length; 
+      for(var i=0; i<c ;i++)
+     {
+          map.set(str1[i],0)
+       }
+       for(var i=0; i<c ;i++)
+      {
+        if(map.has(str1[i])==1)
+        {
+            map.set(str1[i],parseInt(map.get(str1[i])+1))
+        }
+    }
+     console.log(map)
+    });
+
+/**************************OUTPUT********************************/
+enter the statement :asd fgh bhj mkl mkl oop oop oop
+Map { 'asd' => 1, 'fgh' => 1, 'bhj' => 1, 'mkl' => 2, 'oop' => 3 }
