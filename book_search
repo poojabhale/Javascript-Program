@@ -1,0 +1,57 @@
+/********************************************************Book Search*********************************/
+var fs = require('fs');
+var  map =new Map();
+var r1=require("readline")
+var ch=""
+var file=""
+file =file+".txt"
+var path="D:/tyhtr/poooooja/booksearch/";
+var key=fs.readdirSync(path);
+console.log(key)
+console.log("\n1.create book\n2.search book");
+var prompts=r1.createInterface(process.stdin,process.stdout)
+prompts.question("enter your choice  :",function(ch){
+	switch(ch){
+        case '1':create()
+        break;
+        case '2':search()
+        break;
+        default:
+				console.log("Invalid Choice")
+		}
+});
+
+function create(){
+prompts.question("enter the book name :",function(file){
+if(fs.existsSync(path+file) == true)
+{
+	console.log("File Already Exist")
+}
+else{
+fs.writeFileSync(path+file,"")
+console.log("File Created !! ")
+}
+
+});
+}
+
+function search()
+{
+	prompts.question("enter the book name :",function(file){
+	
+		for(var i=0; i<key.length ;i++)
+		{
+			 map.set(key[i],1)
+		  }
+		  if(map.has(file))
+		  {
+			  console.log("File found")
+		  }else{
+			  console.log("file not found")
+		  }
+
+	});
+
+}
+
+/********************************OUTPUT**********************************************/
