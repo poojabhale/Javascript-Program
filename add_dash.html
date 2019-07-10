@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<title>
+even numbers
+</title>
+    <script>
+    function add_dash()
+    {
+       var data=Array.from(document.even_number.number.value);
+       var len=data.length;
+    
+        for(i=0;i<=len;i++)
+    {
+        if(data[i]%2==0 && data[i+1]%2==0)
+        {
+            data[i]=data[i]+'-';
+        }
+    }
+       console.log(data)
+      alert(data.join(""))
+    }
+
+</script>
+</head>
+<body>
+    <form name="even_number" method="post" action="" onsubmit="add_dash();">
+        Number: <input type="text" name="number"><br><br>
+         <input type="submit" value="submit">  
+    </form>  
+</body>
+</html>
